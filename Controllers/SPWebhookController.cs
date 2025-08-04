@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.WebUtilities;
 using Newtonsoft.Json;
 using SPO.Webhook.Models;
 using System.Text;
+using SPO.Webhook.CSOM;
 
 namespace SPO.Webhook.Controllers
 {
@@ -72,6 +73,9 @@ namespace SPO.Webhook.Controllers
                                                 _logger.LogInformation("WebId: {WebId}", notification.WebId);
                                                 _logger.LogInformation("ExpirationDateTime: {Expiration}", notification.ExpirationDateTime);
                                             });
+
+                                            SPOnline spOnline = new SPOnline();
+                                            await spOnline.GetChanges();
 
                                             return Ok(); // Webhook processed successfully
                                         }

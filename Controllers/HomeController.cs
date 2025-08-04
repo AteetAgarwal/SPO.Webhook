@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using SPO.Webhook.CSOM;
 using SPO.Webhook.Models;
 
 namespace SPO.Webhook.Controllers
@@ -15,6 +16,7 @@ namespace SPO.Webhook.Controllers
 
         public IActionResult Index()
         {
+            SPOnline spo = new SPOnline();
             return View();
         }
 
